@@ -8,7 +8,7 @@ import java.util.Optional;
 @Service
 public class NinjaService {
 
-    private NinjaRepository  ninjaRepository;
+    private NinjaRepository ninjaRepository;
 
     public NinjaService(NinjaRepository ninjaRepository) {
         this.ninjaRepository = ninjaRepository;
@@ -35,10 +35,13 @@ public class NinjaService {
         ninjaRepository.deleteById(id);
     }
 
-    // Alterar um ninja
-    public NinjaModel alterarNinjaPorId(Long id) {
-        Optional<NinjaModel> alterarPorId = ninjaRepository.findById(id);
-        return alterarPorId.orElse(null);
+    // Atualizar um ninja
+    public NinjaModel atualizarNinja(Long id, NinjaModel ninjaAtualizado) {
+        if (ninjaRepository.existsById(id)) {
+            ninjaAtualizado.setId(id);
+            return ninjaRepository.save(ninjaAtualizado);
+        }
+        return null;
     }
 
 }
