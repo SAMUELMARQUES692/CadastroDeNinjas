@@ -19,12 +19,6 @@ public class NinjaController {
         return "Essa é minha primeira mensagem nesta rota";
     }
 
-    // Adicionar Ninja (CREATE)
-    @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
-        return ninjaService.criarNinja(ninja);
-    }
-
     // Mostrar todos os ninjas (READ)
     @GetMapping("/listar")
     public List<NinjaModel> listarNinjas() {
@@ -37,6 +31,11 @@ public class NinjaController {
         return ninjaService.listarNinjaPorId(id);
     }
 
+    // Adicionar Ninja (CREATE)
+    @PostMapping("/criar")
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
+        return ninjaService.criarNinja(ninja);
+    }
 
     // Deletar Ninja (DELETE)
     @DeleteMapping("/deletar/{id}")
