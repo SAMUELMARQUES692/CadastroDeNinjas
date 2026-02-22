@@ -1,9 +1,10 @@
 package dev.java10x.Cadastro.de.Ninja.Missoes;
 
-import dev.java10x.Cadastro.de.Ninja.Ninjas.NinjaModel;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MissoesService {
 
     private MissoesRepository missoesRepository;

@@ -1,6 +1,5 @@
 package dev.java10x.Cadastro.de.Ninja.Missoes;
 
-import dev.java10x.Cadastro.de.Ninja.Ninjas.NinjaModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
