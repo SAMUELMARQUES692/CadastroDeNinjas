@@ -1,4 +1,6 @@
 package dev.java10x.Cadastro.de.Ninja.Missoes;
 
-public record MissoesDTO() {
+public class MissoesDTO {
+
+
 }
