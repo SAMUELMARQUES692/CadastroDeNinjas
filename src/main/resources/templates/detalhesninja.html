@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Detalhe do Ninjas</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <style>
+
+        /* ===== RESET ===== */
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+
+   /* ===== BODY ===== */
+   body {
+       font-family: "Segoe UI", Tahoma, sans-serif;
+       background: linear-gradient(135deg, #eef2f7, #dbe4f3);
+       padding: 40px;
+       color: #1f2937;
+   }
+
+   /* ===== TITULO ===== */
+   h1 {
+       text-align: center;
+       margin-bottom: 30px;
+       font-weight: 600;
+   }
+
+   /* ===== CARD PRINCIPAL ===== */
+   div {
+       background: white;
+       border-radius: 14px;
+       box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+       padding: 30px;
+       max-width: 650px;
+       margin: auto;
+       transition: 0.3s;
+   }
+
+   div:hover {
+       transform: translateY(-3px);
+   }
+
+   /* ===== FOTO ===== */
+   img {
+       border-radius: 50%;
+       display: block;
+       margin: 0 auto 20px;
+       width: 140px;
+       height: 140px;
+       object-fit: cover;
+       border: 4px solid #6366f1;
+   }
+
+   /* ===== NOME ===== */
+   h2 {
+       text-align: center;
+       margin-bottom: 15px;
+   }
+
+   /* ===== INFO ===== */
+   p {
+       font-size: 16px;
+       margin: 8px 0;
+       padding: 8px;
+       background: #f8fafc;
+       border-radius: 8px;
+   }
+
+   /* ===== SUBTITULO ===== */
+   h3 {
+       margin-top: 25px;
+       margin-bottom: 10px;
+   }
+
+   /* ===== TABELA MISSÕES ===== */
+   table {
+       width: 100%;
+       border-collapse: collapse;
+       border-radius: 10px;
+       overflow: hidden;
+   }
+
+   /* CABEÇALHO */
+   th {
+       background: linear-gradient(90deg, #4f46e5, #6366f1);
+       color: white;
+       padding: 12px;
+       text-transform: uppercase;
+       font-size: 13px;
+   }
+
+   /* CÉLULAS */
+   td {
+       padding: 12px;
+       border-bottom: 1px solid #eee;
+   }
+
+   /* HOVER */
+   tbody tr:hover {
+       background-color: #f1f5f9;
+   }
+
+   /* ===== BOTÃO VOLTAR ===== */
+   a {
+       display: block;
+       width: fit-content;
+       margin: 25px auto 0;
+       padding: 12px 20px;
+       text-decoration: none;
+       color: white;
+       background: linear-gradient(90deg, #22c55e, #16a34a);
+       border-radius: 8px;
+       font-weight: 600;
+       transition: 0.25s;
+   }
+
+   a:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+   }
+
+    </style>
+
+</head>
+<body>
+<h1>Detalhes do Ninja</h1>
+<div>
+    <img th:src="${ninja.imgUrl}" alt="${ninja.nome}" width="200" />
+    <h2 th:text="${ninja.nome}"></h2>
+    <p><strong>Email:</strong> <span th:text="${ninja.email}"></span></p>
+    <p><strong>Idade:</strong> <span th:text="${ninja.idade}"></span></p>
+    <p><strong>Rank:</strong> <span th:text="${ninja.rank}"></span></p>
+
+    <h3>Missões:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Dificuldade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="missao : ${ninja.missoes}">
+            <td th:text="${missao.descricaoMissao}"></td>
+            <td th:text="${missao.dificuldade}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
+</body>
+</html>

@@ -55,4 +55,28 @@ public class NinjaService {
         return null;
     }
 
+    public NinjaDTO salvarOuAtualizar(NinjaDTO dto) {
+
+        NinjaModel ninja;
+
+        // Se tiver ID → UPDATE
+        if (dto.getId() != null) {
+            ninja = ninjaRepository.findById(dto.getId())
+                    .orElseThrow(() -> new RuntimeException("Ninja não encontrado"));
+        } else {
+            // Se não tiver ID → CREATE
+            ninja = new NinjaModel();
+        }
+
+        ninja.setNome(dto.getNome());
+        ninja.setEmail(dto.getEmail());
+        ninja.setImgUrl(dto.getImgUrl());
+        ninja.setIdade(dto.getIdade());
+        ninja.setRank(dto.getRank());
+
+        ninja = ninjaRepository.save(ninja);
+
+        return ninjaMapper.map(ninja);
+    }
+
 }
