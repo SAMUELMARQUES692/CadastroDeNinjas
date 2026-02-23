@@ -30,7 +30,7 @@ public class NinjaController {
 
     // Mostrar ninja por ID (READ)
     @GetMapping("/listar/{id}")
-    public ResponseEntity<?> listarNinjasPorId(@PathVariable Long id) {
+    public ResponseEntity<?> listarNinjaPorId(@PathVariable Long id) {
        NinjaDTO ninja = ninjaService.listarNinjaPorId(id);
        if (ninja != null) {
            return ResponseEntity.ok(ninja);
