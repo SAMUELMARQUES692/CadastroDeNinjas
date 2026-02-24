@@ -55,10 +55,9 @@ public class NinjaService {
         return null;
     }
 
+    // Salvar do ControllerUi
     public NinjaDTO salvarOuAtualizar(NinjaDTO dto) {
-
         NinjaModel ninja;
-
         // Se tiver ID → UPDATE
         if (dto.getId() != null) {
             ninja = ninjaRepository.findById(dto.getId())
@@ -67,7 +66,6 @@ public class NinjaService {
             // Se não tiver ID → CREATE
             ninja = new NinjaModel();
         }
-
         ninja.setNome(dto.getNome());
         ninja.setEmail(dto.getEmail());
         ninja.setImgUrl(dto.getImgUrl());
@@ -75,7 +73,6 @@ public class NinjaService {
         ninja.setRank(dto.getRank());
 
         ninja = ninjaRepository.save(ninja);
-
         return ninjaMapper.map(ninja);
     }
 

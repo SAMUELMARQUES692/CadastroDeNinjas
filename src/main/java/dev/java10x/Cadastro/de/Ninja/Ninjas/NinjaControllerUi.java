@@ -48,9 +48,9 @@ public class NinjaControllerUi {
         return "adicionarNinja";
     }
 
+    // Rota para salvar
     @PostMapping("/salvar")
-    public String salvarNinja(@ModelAttribute NinjaDTO ninja,
-                              RedirectAttributes redirectAttributes) {
+    public String salvarNinja(@ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes) {
         ninjaService.salvarOuAtualizar(ninja);
         redirectAttributes.addFlashAttribute(
                 "mensagem",
@@ -61,17 +61,14 @@ public class NinjaControllerUi {
         return "redirect:/ninjas/ui/listar";
     }
 
+    // Rota para editar po ID
     @GetMapping("/editar/{id}")
     public String editarNinja(@PathVariable Long id, Model model) {
-
         NinjaDTO ninja = ninjaService.listarNinjaPorId(id);
-
         if (ninja == null) {
             return "redirect:/ninjas/ui/listar";
         }
-
         model.addAttribute("ninja", ninja);
-
         // reutiliza o mesmo formulário de adicionar
         return "adicionarNinja";
     }
